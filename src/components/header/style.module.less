@@ -1,0 +1,28 @@
+.header {
+  flex-shrink: 0;
+  padding: 10px;
+  display: flex;
+  height: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 0.5px solid #001529;
+  .left {
+  }
+  .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .operation {
+      > * {
+        &:not(:first-child) {
+          margin-left: 5px;
+        }
+      }
+    }
+    .user {
+      margin-left: 10px;
+    }
+  }
+}
