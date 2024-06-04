@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  nginx:
+  lego-nginx:
     image: nginx:latest
     container_name: nginx
     restart: always
