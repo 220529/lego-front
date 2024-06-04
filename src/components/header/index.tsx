@@ -54,6 +54,9 @@ export default React.memo(() => {
   useEffect(() => {
     fetchUserInfo();
   }, []);
+  const login = () => {
+    navigate("/login");
+  };
   return (
     <div className={style.header}>
       <div className={style.left}>header</div>
@@ -74,7 +77,15 @@ export default React.memo(() => {
             创建作品
           </Button>
         </div>
-        <div className={style.user}>{userInfo.username}</div>
+        <div className={style.user}>
+          {userInfo.username ? (
+            <span>{userInfo.username}</span>
+          ) : (
+            <Button type="primary" onClick={login}>
+              登录
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
