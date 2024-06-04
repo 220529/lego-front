@@ -1,9 +1,8 @@
 version: "3"
 
 services:
-  lego-nginx:
+  nginx:
     image: nginx:latest
-    container_name: nginx
     restart: always
     ports:
       - 9004:80
