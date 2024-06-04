@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const { work, fetchWork } = useWork();
   useEffect(() => {
     fetchWork();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={style.container}>

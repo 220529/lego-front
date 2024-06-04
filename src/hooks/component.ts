@@ -60,6 +60,7 @@ export const useNodeProperty = ({ property, updateProperty }: PropertyProps) => 
     }
 
     return fieldItems; // 返回生成的表单字段配置项对象
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [property]); // 当属性对象发生变化时重新计算
 
   return { fields }; // 返回表单字段配置项对象

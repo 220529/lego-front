@@ -53,6 +53,7 @@ export default React.memo(() => {
   const { fetchUserInfo } = useUserInfo();
   useEffect(() => {
     fetchUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const login = () => {
     navigate("/login");

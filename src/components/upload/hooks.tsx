@@ -28,6 +28,7 @@ export const useUpload = ({ uploadSuccess }: UploadProps) => {
 
   const Uploader = useCallback(() => {
     return <input onChange={onChange} className={style.input} ref={ref} type="file" />;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
