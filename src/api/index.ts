@@ -4,8 +4,7 @@ import store from "@/store";
 import { ApiResponse } from "@/api/response";
 
 const config: AxiosRequestConfig = {
-  baseURL:
-    process.env.NODE_ENV === "development" ? "/api" : `${process.env.REACT_APP_BASE_URL}/api`,
+  baseURL: "/api",
   timeout: 5000,
   withCredentials: true,
 };
