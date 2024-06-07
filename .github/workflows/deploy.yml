@@ -40,7 +40,7 @@ jobs:
           npm run build
           mkdir lego-front
           cp -r build conf.d lego-front
-          cp docker-compose.yml dev.sh nginx.conf lego-front
+          cp docker-compose.yml dev.sh lego-front
 
       - name: 将配置文件夹copy到ssh
         uses: appleboy/scp-action@v0.1.7
