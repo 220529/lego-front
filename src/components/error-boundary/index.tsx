@@ -1,36 +1,35 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component, ReactNode } from "react";
 
+// 定义 Props 和 State 的接口
 interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
 interface ErrorBoundaryState {
   hasError: boolean;
-  message: string;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { hasError: false, message: "" };
+    this.state = { hasError: false };
   }
 
+  // 在捕获到错误后更新 state
   static getDerivedStateFromError(_: Error): ErrorBoundaryState {
-    // 更新 state 来指示发生错误
-    return { hasError: true, message: _.message };
+    return { hasError: true };
   }
 
-  componentDidCatch(error: Error, info: ErrorInfo) {
-    // 在这里可以记录错误信息到日志服务
-    // console.error("Error caught by ErrorBoundary:", error, info);
+  // 用于记录错误信息
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    // console.error("Error caught in ErrorBoundary:", error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // 当出现错误时显示的备用 UI
-      return <h1>{this.state.message}</h1>;
+      return <h1>Something went wrong.</h1>;
     }
-    // 没有错误时渲染子组件
+
     return this.props.children;
   }
 }
