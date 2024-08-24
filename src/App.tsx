@@ -1,19 +1,19 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "@/pages/Home";
-import Work from "@/pages/work";
-import Editor from "@/pages/editor/index";
-import Template from "@/pages/Template";
-import Login from "@/pages/login/index";
 import ErrorBoundary from "@/components/error-boundary";
-import TestError from "@/components/test-error";
+
+// 使用 lazy 进行组件的懒加载
+const Home = lazy(() => import("@/pages/Home"));
+const Work = lazy(() => import("@/pages/work"));
+const Editor = lazy(() => import("@/pages/editor/index"));
+const Template = lazy(() => import("@/pages/Template"));
+const Login = lazy(() => import("@/pages/login/index"));
+const TestError = lazy(() => import("@/components/test-error"));
 
 function App() {
   useEffect(() => {
-    // 使用 unhandledrejection 监听器捕获未处理的 Promise 错误
     const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
       console.error("Unhandled rejection caught:", event.reason);
-      // 这里你可以执行额外的操作，如显示错误消息或报告错误
     };
 
     window.addEventListener("unhandledrejection", handleUnhandledRejection);
@@ -42,13 +42,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // 捕获资源加载错误
     const handleResourceError = (event: Event) => {
       console.error("Resource loading error:", event);
-      // 可以在这里执行额外的操作，比如展示用户友好的错误消息
     };
 
-    // 使用捕获阶段的事件监听器
     window.addEventListener("error", handleResourceError, true);
 
     return () => {
@@ -59,14 +56,16 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/work/:id" element={<Work />} />
-          <Route path="/editor/:id" element={<Editor />} />
-          <Route path="/template" element={<Template />} />
-          <Route path="/error" element={<TestError />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/work/:id" element={<Work />} />
+            <Route path="/editor/:id" element={<Editor />} />
+            <Route path="/template" element={<Template />} />
+            <Route path="/error" element={<TestError />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Suspense>
       </Router>
     </ErrorBoundary>
   );
