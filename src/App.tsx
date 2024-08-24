@@ -41,6 +41,21 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    // 捕获资源加载错误
+    const handleResourceError = (event: Event) => {
+      console.error("Resource loading error:", event);
+      // 可以在这里执行额外的操作，比如展示用户友好的错误消息
+    };
+
+    // 使用捕获阶段的事件监听器
+    window.addEventListener("error", handleResourceError, true);
+
+    return () => {
+      window.removeEventListener("error", handleResourceError, true);
+    };
+  }, []);
+
   return (
     <ErrorBoundary>
       <Router>
