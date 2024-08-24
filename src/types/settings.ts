@@ -84,7 +84,8 @@ const colorConvert = (e: Color) => {
   if (typeof e === "string") {
     return e;
   } else {
-    return e.toHexString();
+    return e;
+    // return e.toHexString();
   }
 };
 

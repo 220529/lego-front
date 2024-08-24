@@ -1,14 +1,13 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Header from "@/components/header";
+import Test from "@/components/test";
 
 const App: React.FC = () => {
-  useEffect(() => {
-    console.log("useEffect....0824");
-  }, [])
   return (
     <div className="App">
       <Header />
       <span>home</span>
+      <Test />
     </div>
   );
 };
