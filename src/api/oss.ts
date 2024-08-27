@@ -1,8 +1,10 @@
 import api from "@/api/index";
 
 export interface OssResponse {
-  url: string;
-  fileName: string;
+  data: {
+    url: string;
+    fileName: string;
+  };
 }
 
 // 上传文件请求方法

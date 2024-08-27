@@ -26,14 +26,14 @@ export default React.memo(() => {
   };
 
   const uploadSuccess = async (res: OssResponse) => {
-    const info = await loadImageDimensions(res.url);
+    const info = await loadImageDimensions(res.data.url);
     if (info) {
       dispatch(
         createComponent({
           name: "l-image",
           props: {
             ...defaultImageComponent,
-            src: res.url,
+            src: res.data.url,
             width: info.width + "px",
             height: info.height + "px",
           },
