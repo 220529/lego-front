@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
+    "@ns-widget/monitor": "^0.0.4",
     "@reduxjs/toolkit": "^2.2.3",
     "antd": "^5.16.0",
     "axios": "^1.6.8",

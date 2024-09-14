@@ -2,11 +2,13 @@ import ReactDOM from "react-dom/client";
 import store, { persistor } from "@/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import monitor from "@ns-widget/monitor";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "@/styles/reset.css";
 
+monitor.init();
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   // <React.StrictMode>

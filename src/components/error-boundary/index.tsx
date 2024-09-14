@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from "react";
+import monitor from "@ns-widget/monitor";
 
 // 定义 Props 和 State 的接口
 interface ErrorBoundaryProps {
@@ -22,7 +23,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   // 用于记录错误信息
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.error("Error caught in ErrorBoundary:", error, errorInfo);
+    monitor.upload({ type: "ErrorBoundary", error });
   }
 
   render() {

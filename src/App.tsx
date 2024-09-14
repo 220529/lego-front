@@ -11,48 +11,6 @@ const Login = lazy(() => import("@/pages/login/index"));
 const TestError = lazy(() => import("@/components/test-error"));
 
 function App() {
-  useEffect(() => {
-    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-      console.error("Unhandled rejection caught:", event.reason);
-    };
-
-    window.addEventListener("unhandledrejection", handleUnhandledRejection);
-
-    return () => {
-      window.removeEventListener("unhandledrejection", handleUnhandledRejection);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleGlobalError = (
-      message: string | Event,
-      source?: string,
-      lineno?: number,
-      colno?: number,
-      error?: Error
-    ) => {
-      console.error("Global error caught:", { message, source, lineno, colno, error });
-    };
-
-    window.onerror = handleGlobalError;
-
-    return () => {
-      window.onerror = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleResourceError = (event: Event) => {
-      console.error("Resource loading error:", event);
-    };
-
-    window.addEventListener("error", handleResourceError, true);
-
-    return () => {
-      window.removeEventListener("error", handleResourceError, true);
-    };
-  }, []);
-
   return (
     <ErrorBoundary>
       <Router>
