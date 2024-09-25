@@ -14,7 +14,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading....</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work/:id" element={<Work />} />
