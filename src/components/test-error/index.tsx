@@ -35,6 +35,10 @@ export default React.memo(() => {
       console.error("Error caught in event handler:", error);
     }
   };
+  const increase = () => {
+    // @ts-ignore
+    console.log("increase", abc);
+  };
   return (
     <div className={style.test}>
       <Button type="primary" danger onClick={ErrorBoundary}>
@@ -53,7 +57,7 @@ export default React.memo(() => {
         rejectError
       </Button>
       {/* @ts-ignore */}
-      <Button danger onClick={() => methodDoesNotExist()}>
+      <Button danger onClick={increase}>
         Break the world
       </Button>
       ;{/* 故意加载一个不存在的图片资源以触发错误 */}
