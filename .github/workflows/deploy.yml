@@ -38,6 +38,12 @@ jobs:
       - name: 打包
         run: |
           npm run build
+
+          # 提取标签并设置为环境变量
+          TAG=${GITHUB_REF#refs/tags/}  # 去掉 'refs/tags/' 前缀
+          echo "RELEASE_VERSION=${TAG}" >> $GITHUB_ENV
+
+          npx sentry-cli releases files $RELEASE_VERSION upload-sourcemaps ./dist --validate
           mkdir lego-front
           cp -r build conf.d lego-front
           cp docker-compose.yml dev.sh lego-front

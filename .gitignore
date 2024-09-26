@@ -31,3 +31,6 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 # package-lock.json
+
+# Sentry Config File
+.env.sentry-build-plugin

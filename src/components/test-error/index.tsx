@@ -52,7 +52,11 @@ export default React.memo(() => {
       <Button type="primary" danger onClick={rejectError}>
         rejectError
       </Button>
-      {/* 故意加载一个不存在的图片资源以触发错误 */}
+      {/* @ts-ignore */}
+      <Button danger onClick={() => methodDoesNotExist()}>
+        Break the world
+      </Button>
+      ;{/* 故意加载一个不存在的图片资源以触发错误 */}
       <img src="https://example.com/nonexistent-image.jpg" alt="Example" />
       {/* 故意加载一个不存在的脚本资源以触发错误 */}
       <script src="https://example.com/nonexistent-script.js" />

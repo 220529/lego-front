@@ -1,3 +1,4 @@
+import "./instrument";
 import ReactDOM from "react-dom/client";
 import store, { persistor } from "@/store";
 import { Provider } from "react-redux";
