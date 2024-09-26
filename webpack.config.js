@@ -1,5 +1,7 @@
 const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 
+console.log("process.env...", process.env);
+
 module.exports = {
   // ... other options
   devtool: "source-map", // Source map generation must be turned on

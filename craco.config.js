@@ -1,5 +1,6 @@
 const path = require("path");
 const CracoLessPlugin = require("craco-less");
+const { sentryWebpackPlugin } = require("@sentry/webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
@@ -9,6 +10,14 @@ module.exports = {
       "@": path.resolve(__dirname, "src"),
     },
     // plugins: [new BundleAnalyzerPlugin()],
+    devtool: process.env.NODE_ENV === "development" ? "cheap-module-source-map" : "source-map",
+    plugins: [
+      sentryWebpackPlugin({
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        org: "sentry-wbf",
+        project: "lego-front",
+      }),
+    ],
   },
   devServer: {
     // 在开发环境下，使用代理
